@@ -12,6 +12,7 @@ import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 
+import com.kyxbob.gtnhdataexporter.GtnhDataExporter;
 import com.kyxbob.gtnhdataexporter.exporter.enums.ResourceType;
 
 public class Resource {
@@ -55,9 +56,15 @@ public class Resource {
             id += ":" + hashNBT(itemStack.getTagCompound());
         }
 
-        IIcon itemIcon = item.getIconIndex(itemStack);
-        if (itemIcon != null) {
-            id += ":" + itemIcon.getIconName();
+        try {
+            IIcon itemIcon = item.getIcon(itemStack, 0);
+            if (itemIcon != null && itemIcon.getIconName() != null) {
+                id += ":" + itemIcon.getIconName();
+            }
+        } catch (Exception e) {
+            GtnhDataExporter.LOG
+                    .warn("Failed to get icon for " + registryName + " (meta " + itemStack.getItemDamage() + ")",
+                            e);
         }
 
         return id;

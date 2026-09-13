@@ -12,22 +12,16 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(
-    modid = GtnhDataExporter.MODID,
-    version = Tags.VERSION,
-    name = GtnhDataExporter.DISPLAYNAME,
-    acceptedMinecraftVersions = "[1.7.10]")
+@Mod(modid = GtnhDataExporter.MODID, version = Tags.VERSION, name = GtnhDataExporter.DISPLAYNAME, acceptedMinecraftVersions = "[1.7.10]")
 public class GtnhDataExporter {
 
     public static final String MODID = "gtnhdataexporter";
     public static final String DISPLAYNAME = "GTNH Data Exporter";
-    public static final Logger LOG = LogManager.getLogger(MODID);
+    public static final Logger LOG = LogManager.getLogger(MODID + "_logger");
     public static File CONFIGFOLDER;
     public static File OUTPUTFOLDER;
 
-    @SidedProxy(
-        clientSide = "com.kyxbob.gtnhdataexporter.ClientProxy",
-        serverSide = "com.kyxbob.gtnhdataexporter.CommonProxy")
+    @SidedProxy(clientSide = "com.kyxbob.gtnhdataexporter.ClientProxy", serverSide = "com.kyxbob.gtnhdataexporter.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
