@@ -14,13 +14,12 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(
     modid = GtnhDataExporter.MODID,
-    version = GtnhDataExporter.VERSION,
+    version = Tags.VERSION,
     name = GtnhDataExporter.DISPLAYNAME,
     acceptedMinecraftVersions = "[1.7.10]")
 public class GtnhDataExporter {
 
     public static final String MODID = "gtnhdataexporter";
-    public static final String VERSION = "1.0.0";
     public static final String DISPLAYNAME = "GTNH Data Exporter";
     public static final Logger LOG = LogManager.getLogger(MODID);
     public static File CONFIGFOLDER;
