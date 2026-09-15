@@ -46,8 +46,7 @@ public class Resource {
     private final ResourceType _type;
 
     private static String computeId(ItemStack itemStack) {
-        // Kind of unique, for some reasons appliedenergistics2:item.ItemFacade:0,
-        // TConstruct:creativeModifier:0
+        // Kind of unique, for some reasons some items have duplicate names.
         Item item = itemStack.getItem();
         String registryName = (String) Item.itemRegistry.getNameForObject(item);
 
@@ -63,8 +62,7 @@ public class Resource {
             }
         } catch (Exception e) {
             GtnhDataExporter.LOG
-                    .warn("Failed to get icon for " + registryName + " (meta " + itemStack.getItemDamage() + ")",
-                            e);
+                    .warn("Failed to get icon for " + registryName + " (meta " + itemStack.getItemDamage() + ")", e);
         }
 
         return id;
